@@ -22,6 +22,7 @@ module.exports = {
       "secondary-foreground": "hsl(var(--bg-200))",
       text: "hsl(var(--primary-300))",
       "text-clear": "hsl(var(--text-100))",
+      white: "hsl(var(--white))",
     },
     extend: {
       keyframes: {

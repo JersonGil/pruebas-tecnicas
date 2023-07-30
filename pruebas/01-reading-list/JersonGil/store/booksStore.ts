@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import library from "@/data/books.json"
-import { Root, Book } from "@/interfaces/books"
+import { Book, Library } from "@/interfaces/books"
 
 interface LibraryState {
-  library: Root,
-  readingList: Book[],
+  library: Library[],
+  readingList: Library[],
   getBooks: () => void,
   createReadingList: (arg: Book | null) => void,
 }
@@ -13,21 +13,21 @@ interface LibraryState {
 const libraryStore = create<LibraryState>()(
   persist(
     (set) => ({
-      library: { library:[] },
+      library: [],
       readingList: [],
       getBooks: () => {
         if (Array.isArray(library.library) && library.library.length > 0) {
-          return set({ library: { library: library.library } });
+          return set({ library: library.library });
         }
       },
       createReadingList: (book) => {
         if (book) {
           set((state) => {
-            const exist = state.readingList.find(reading => reading.ISBN === book.ISBN)
+            const exist = state.readingList.find((reading) => reading.book.ISBN === book.ISBN)
 
             if (!exist) {
               return {
-                readingList: [...state.readingList, book]
+                readingList: [...state.readingList, { book }]
               }
             }
 

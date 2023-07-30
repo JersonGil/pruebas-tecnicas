@@ -13,7 +13,7 @@ const BookSelected = ({ bookSelected }: Props) => {
   return (
     <section className={`${!bookSelected && "hidden"} bg-primary p-6 rounded-e-3xl flex flex-col items-center gap-4 max-h-[1000px]`}>
       <h1 className="text-2xl mb-4 text-center font-bold text-text">Acerca del libro</h1>
-      <Image src={bookSelected ? bookSelected?.cover : ""} alt={bookSelected ? bookSelected?.title : ""} width={300} height={400} />
+      <Image src={bookSelected ? bookSelected?.cover : "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"} alt={bookSelected ? bookSelected?.title : "not images"} width={300} height={400} />
       <h2 className="text-2xl mt-4 text-center font-bold text-text">{bookSelected?.title}</h2>
       <p className="text-center text-text">{bookSelected?.author.name}</p>
       <div className="bg-secondary-foreground rounded-xl flex flex-row justify-around p-4 w-64 h-12 items-center mt-4">

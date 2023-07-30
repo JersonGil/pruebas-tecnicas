@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: "images-na.ssl-images-amazon.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+        port: "",
+      },
     ],
   },
 };

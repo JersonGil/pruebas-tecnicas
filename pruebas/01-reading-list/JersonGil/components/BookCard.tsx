@@ -12,10 +12,10 @@ import {
   CardTitle,
 } from "@/components/ui/card"
 import { getVariantGender } from "@/lib/utils"
-import { Book, Root } from "@/interfaces/books"
+import { Book, Library } from "@/interfaces/books"
 
 interface Props {
-  library: Root
+  library: Library[],
   getBook: (args: Book) => void;
 }
 
@@ -26,10 +26,10 @@ const BookCard = ({ library, getBook }: Props) => {
   return (
     <section>
       {
-        library.library.length > 0 ? (
+        library.length > 0 ? (
           <div className="grid grid-cols-3 gap-6">
             {
-              library.library.map(({ book }) => (
+              library.map(({ book }) => (
                 <Card key={`${libaryCardId}-${book.ISBN}`} onClick={() => getBook(book)} className="w-80 hover:bg-secondary-foreground hover:cursor-pointer bg-secondary">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold">{book.title}</CardTitle>
@@ -54,8 +54,8 @@ const BookCard = ({ library, getBook }: Props) => {
         ) : (
           <div className="flex flex-row gap-4 items-center">
             {
-              [1, 2, 3].map(() => (
-                <SkeletonCard key={skeletonId} />
+              [1, 2, 3].map((num) => (
+                <SkeletonCard key={`${num}-${skeletonId}`} />
               ))
             }
           </div>
